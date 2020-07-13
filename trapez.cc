@@ -45,6 +45,14 @@ std::vector<std::vector<double>> romberg(std::vector<double> I) {
   for (int k = 0; k <= N; ++k) {
     R[k].push_back(I[k]);
   }
+
+  
+  for (int n = 1; n <= N; ++n) {
+    for(int k = 0; k<=N-n; ++k) {
+      double extr = R[k+1][n-1]+((R[k+1][n-1]-R[k][n-1])/(pow(2,2*n)-1));
+      R[k].push_back(extr);
+     }   
+  }
   return R;
 }
 
